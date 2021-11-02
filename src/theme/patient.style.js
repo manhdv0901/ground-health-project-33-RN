@@ -52,7 +52,11 @@ export const patientStyles = StyleSheet.create({
     fontSize: normalize(15),
     
     color:colors.RED
+  },
+  imgListEmpty:{
+    width:normalize(220),
+    height:normalize(150),
+    justifyContent:'center',
+    alignSelf:'center',
   }
-
- 
 });

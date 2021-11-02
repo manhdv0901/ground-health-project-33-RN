@@ -21,6 +21,13 @@ export const detailPatientStyle = StyleSheet.create({
         marginLeft:normalize(10),
         marginTop: normalize(10),
     },
+    txtValue:{
+        fontSize:normalize(18),
+        fontWeight:'bold',
+        color:colors.BLACK,
+        marginLeft:normalize(10),
+        marginTop:normalize(5),
+    },
     viewCom:{
         marginTop:normalize(10),
         padding:normalize(15),

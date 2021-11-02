@@ -1,19 +1,21 @@
 import React from 'react';
-import {View, Text, StyleSheet,Image} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import normalize from 'react-native-normalize';
 import {colors} from '../../theme/color';
-import { max_width } from '../../theme/headerLogin.style';
+import {max_width} from '../../theme/headerLogin.style';
 
-export default function ChartDevices({url_img,title_time,time}) {
+export default function ChartDevices({url_img, title_time, time}) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.txtTile}>Lịch sử đo gần nhất</Text>
-      <View style={styles.item}>
-      <Image style={styles.imgChart} source={url_img} />
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.txtTile}>Lịch sử đo gần nhất</Text>
+        <View style={styles.item}>
+          <Image style={styles.imgChart} source={url_img} />
           <Text style={styles.txtChart}>{title_time}</Text>
           <Text style={styles.txtChart}>{time}</Text>
         </View>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
@@ -44,9 +46,11 @@ const styles = StyleSheet.create({
     height: normalize(50),
     // marginLeft: normalize(),
   },
-  txtChart:{
-      fontSize:normalize(16),
-      marginLeft: normalize(20),
-      marginTop:normalize(10),
-  }
+  txtChart: {
+    fontSize: normalize(16),
+    marginLeft: normalize(20),
+    marginTop: normalize(10),
+    fontWeight: 'bold',
+    color: colors.BLACK,
+  },
 });

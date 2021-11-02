@@ -43,9 +43,11 @@ export default function ScrollInput() {
           console.log('err doctor --> ', err);
         });
     }
-
-    // navigation.navigate(isCheck == true? 'doctor': 'patient')
   };
+  const handlelogin1 = () => {
+    navigation.navigate(isCheck == true ? 'doctor' : 'patient');
+  };
+
   return (
     <SafeAreaView style={styles.view}>
       <ScrollView
@@ -78,7 +80,7 @@ export default function ScrollInput() {
             />
             <Text style={styles.txtCheck}>Đăng nhập bác sĩ</Text>
           </View>
-          <ButtonLogin title={'Đăng nhập'} onPress={handleLogin} />
+          <ButtonLogin title={'Đăng nhập'} onPress={handlelogin1} />
         </View>
         <View style={styles.container}>
           <Text style={styles.txt}>Đăng kí</Text>

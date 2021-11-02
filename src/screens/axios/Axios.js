@@ -1,5 +1,7 @@
 import axios from 'axios';
 const URL_API = 'https://web-test-3010.herokuapp.com';
+// const URL_API = 'http://192.168.0.100:3000';
+
 const METHOD_GET = 'GET';
 const METHOD_POST ='POST';
 const METHOD_PUT = 'PUT';

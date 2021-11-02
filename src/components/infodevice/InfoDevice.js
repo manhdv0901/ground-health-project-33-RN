@@ -9,7 +9,7 @@ export function InfoPatient({navigaiton, url, _value, _name, _time, _date}) {
       <View style={styles.viewCom}>
         <View style={{flexDirection: 'row'}}>
           <Image style={styles.img} source={url} />
-          <Text style={styles.txt}>{_value}</Text>
+          <Text style={styles.txtValue}>{_value}</Text>
         </View>
         <Text style={styles.txtName}>{_name}</Text>
         <Text style={styles.txt}>{_time}</Text>
@@ -29,7 +29,7 @@ export function Temp({url, _value, _time, _name, _date}) {
             <Text style={styles.txtName}>{_name}</Text>
           </View>
           <View>
-            <Text style={styles.txt}>{_value}</Text>
+            <Text style={styles.txtValue}>{_value}</Text>
             <Text style={styles.txt}>{_time}</Text>
             <Text style={styles.txt}>{_date}</Text>
           </View>

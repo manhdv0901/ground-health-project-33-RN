@@ -1,15 +1,52 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import ChartDevices from '../../components/item/ChartDevices';
+import React, {useEffect, useState} from 'react';
+import {View, Text, FlatList, Image, ScrollView} from 'react-native';
+import {findDevice} from '../axios/findDevice';
+import {chartStyle as styles} from '../../theme/chart.style';
 
-export default function ChartTemp() {
-  const url = require('../../assets/images/temp.png');
-return (
-  <ChartDevices
-    url_img={url}
-    title_time={'Nhiệt độ: 37'}
-    time={'21:36 23/10/2021'}
-  />
-);
+export default function ChartTemp({route}) {
+  const url = require('../../assets/images/heartbeat(2).png');
+  const url_listEmpty = require('../../assets/images/listEmpty.png');
 
+  const [dataHeart, setDataHeart] = useState([]);
+  const {device} = route.params;
+  // console.log(device);
+  useEffect(() => {
+    findDevice({key_device: device})
+      .then(res => {
+        setDataHeart(res.temp);
+        // console.log('data device: ', res.heart);
+      })
+      .catch(err => {
+        console('err find device: ', err);
+      });
+  }, []);
+  const renderItem = ({item, index}) => {
+    return (
+      <ScrollView>
+        <View style={styles.item}>
+          <Image style={styles.imgChart} source={url} />
+          <Text style={styles.txtChart}>{item.value} *C</Text>
+          <Text style={styles.txtChart}>Thời gian: {item.real_time}</Text>
+        </View>
+      </ScrollView>
+    );
+  };
+  const listEmpty = () => {
+    return (
+      <View style={styles.container}>
+        <Image style={styles.imgListEmpty} source={url_listEmpty} />
+      </View>
+    );
+  };
+  return (
+    <View style={styles.container}>
+      <Text style={styles.txtTile}>Lịch sử đo gần nhất</Text>
+
+      <FlatList
+        data={dataHeart}
+        renderItem={renderItem}
+        ListEmptyComponent={listEmpty}
+      />
+    </View>
+  );
 }

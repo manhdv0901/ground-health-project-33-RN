@@ -13,13 +13,28 @@ import normalize from 'react-native-normalize';
 import {colors} from '../../theme/color';
 import {max_width} from '../../theme/headerLogin.style';
 
-
-export default function AddPatient({visible, isOpen,closed, value,onChangeText,placeholder,placeholderTextColor,url_img,title,btnApply, btnCancel,onPressFind}) {
- 
-
+export default function AddPatient({
+  visible,
+  isOpen,
+  closed,
+  value,
+  onChangeText,
+  placeholder,
+  placeholderTextColor,
+  url_img,
+  title,
+  btnApply,
+  btnCancel,
+  onPressFind,
+}) {
   return (
     <View style={styles.centeredView}>
-      <Modal animationType="slide" transparent={true} visible={visible} isOpen={isOpen} onClosed={closed}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={visible}
+        isOpen={isOpen}
+        onClosed={closed}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.txtHeader}>{title}</Text>
@@ -35,9 +50,7 @@ export default function AddPatient({visible, isOpen,closed, value,onChangeText,p
               />
             </View>
             <View style={styles.viewTouch}>
-              <TouchableOpacity
-                style={styles.touch1}
-                onPress={closed}>
+              <TouchableOpacity style={styles.touch1} onPress={closed}>
                 <Text style={styles.txt1}>{btnCancel}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={onPressFind} style={styles.touch2}>
@@ -47,7 +60,7 @@ export default function AddPatient({visible, isOpen,closed, value,onChangeText,p
           </View>
         </View>
       </Modal>
-    <TouchableOpacity style={styles.viewImg} onPress={isOpen}>
+      <TouchableOpacity style={styles.viewImg} onPress={isOpen}>
         <Image style={styles.imaAdd} source={url_img} />
       </TouchableOpacity>
     </View>
@@ -59,6 +72,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.g,
+    // bottom:0,
   },
   modalView: {
     backgroundColor: colors.BLUE_LIGHT,
@@ -103,7 +118,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: normalize(10),
-    marginBottom:normalize(25),
+    marginBottom: normalize(25),
     // alignSelf:'center'
   },
   txt1: {
@@ -133,12 +148,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.BLUE,
     marginRight: normalize(30),
   },
-   imaAdd: {
+  imaAdd: {
     width: normalize(60),
     height: normalize(60),
   },
   viewImg: {
-    top: '40%',
+    top: '30%',
     left: '35%',
+    bottom: 0,
   },
 });
