@@ -14,8 +14,6 @@ export default function InfoDoctor() {
   //get data loginDoctor on redux
   const idDoctor = useSelector(state => state.login);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     findOneDoctor({id: idDoctor.id})
       .then(res => {

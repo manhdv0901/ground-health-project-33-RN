@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, Image, ScrollView} from 'react-native';
 import {findDevice} from '../axios/findDevice';
 import {chartStyle as styles} from '../../theme/chart.style';
+import EmptyFlatlist from '../../components/icons/emptyFlatlist/EmptyFlatlist';
+import ChartDevices from '../../components/item/ChartDevices';
 
 export default function ChartTemp({route}) {
-  const url = require('../../assets/images/heartbeat(2).png');
-  const url_listEmpty = require('../../assets/images/listEmpty.png');
+  const url = require('../../assets/images/temp.png');
 
   const [dataHeart, setDataHeart] = useState([]);
   const {device} = route.params;
@@ -23,19 +24,13 @@ export default function ChartTemp({route}) {
   const renderItem = ({item, index}) => {
     return (
       <ScrollView>
-        <View style={styles.item}>
-          <Image style={styles.imgChart} source={url} />
-          <Text style={styles.txtChart}>{item.value} *C</Text>
-          <Text style={styles.txtChart}>Thời gian: {item.real_time}</Text>
-        </View>
+        <ChartDevices url_img={url} title_time={item.value} content={' *C'} txt_time={'Thời gian: '} time={item.real_time}/>
       </ScrollView>
     );
   };
   const listEmpty = () => {
     return (
-      <View style={styles.container}>
-        <Image style={styles.imgListEmpty} source={url_listEmpty} />
-      </View>
+     <EmptyFlatlist/>
     );
   };
   return (

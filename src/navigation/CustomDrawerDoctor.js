@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem,
 } from '@react-navigation/drawer';
 import { colors } from '../theme/color';
 import normalize from 'react-native-normalize';
@@ -13,7 +12,7 @@ import {name} from '../screens/redux/reducers/index';
 export default function CustomDrawerDoctor({...props}) {
   const nameDoctor = useSelector(state => state.name);
   useEffect(() => {
-   return nameDoctor;
+    nameDoctor;
   }, []);
   // console.log('doctor name: ', nameDoctor.name);
   const url= require('../assets/images/profile_doctor.png');

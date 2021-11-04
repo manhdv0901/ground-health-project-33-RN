@@ -15,6 +15,7 @@ import DetailNotifi from './src/screens/notification/DetailNotifi';
 import Logout from './src/screens/logout/Logout';
 import store from './src/screens/redux/store';
 import {Provider} from 'react-redux';
+import ListPatient from './src/screens/patient/ListPatient';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -25,9 +26,9 @@ export default function App() {
           initialRouteName="splash"
           screenOptions={{headerShown: false}}>
           <Stack.Screen name="splash" component={Splash} />
-          <Stack.Screen name="login" component={Login} />
-          <Stack.Screen name="doctor" component={NavigationDrawer} />
-          <Stack.Screen name="patient" component={NavigationDrawerPatient} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Doctor" component={NavigationDrawer} />
+          <Stack.Screen name="Patient" component={NavigationDrawerPatient} />
           <Stack.Screen name="detailPatient" component={DetailPatient} />
           <Stack.Screen
             name="detailPatientDoctor"

@@ -5,7 +5,7 @@ import { getNamePatient } from '../redux/actions/nameUser';
 import InfoUser from '../../components/infoUser/InfoUser';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {findOnePatient} from '../axios/findPatient';
-import {connect, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {login} from '../redux/reducers/index';
 
 export default function InfoPatient() {
@@ -14,16 +14,17 @@ export default function InfoPatient() {
 
   //get data loginDoctor on redux
   const idPatient = useSelector(state => state.login);
+  console.log('id patient find info: ', idPatient.id);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // console.log('id patient: ', idPatient.id);
   useEffect(() => {
     findOnePatient({id: idPatient.id})
       .then(res => {
         setDataPatient(res);
-        console.log('data one a patient: ', res);
-        dispatch(getNamePatient(res.name));
-        console.log('name patient: ', res.name);
+        // console.log('data one a patient: ', res);
+        // dispatch(getNamePatient(res.name));
+        // console.log('name patient: ', res.name);
       })
       .catch(err => {
         console.log('err data patient: ', err);

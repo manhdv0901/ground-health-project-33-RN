@@ -19,9 +19,9 @@ export default function NavigationDrawerPatient() {
     <Drawer.Navigator
       screenOptions={{drawerItemStyle: {marginTop: normalize(15)}}}
       drawerContent={props => <CustomDrawerPatient {...props} />}
-      initialRouteName="listPatient">
+      initialRouteName="ListPatient">
       <Drawer.Screen
-        name="listPatient"
+        name="ListPatient"
         component={ListPatient}
         options={{
           title: 'Nhóm bệnh nhân',

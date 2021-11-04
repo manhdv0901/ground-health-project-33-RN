@@ -3,3 +3,4 @@ export const ID_DOCTOR_LOGIN = 'ID_DOCTOR_LOGIN';
 export const LOADING = 'LOADING';
 export const NAME_DOCTOR = 'NAME_DOCTOR';
 export const NAME_PATIENT = 'NAME_PATIENT';
+export const SET_SPLASH = 'SET_SPLASH';

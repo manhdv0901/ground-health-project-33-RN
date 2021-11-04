@@ -13,9 +13,9 @@ import normalize from 'react-native-normalize';
 
 export default function CustomDrawerPatient({...props}) {
   const namePatient = useSelector(state => state.name);
-  console.log('name patient: ', namePatient);
+  // console.log('name patient: ', namePatient);
   useEffect(() => {
-    return namePatient;
+   namePatient;
   }, []);
   const url= require('../assets/images/profile_patient.png');
     return (    

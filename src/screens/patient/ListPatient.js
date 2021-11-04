@@ -8,7 +8,7 @@ import AddPatient from '../../components/modal/AddPatient';
 import {findPatient} from '../axios/findPatient';
 import normalize from 'react-native-normalize';
 import {login} from '../redux/reducers/index';
-import { useSelector } from 'react-redux';
+import EmptyFlatlist from '../../components/icons/emptyFlatlist/EmptyFlatlist';
 
 export default function ListPatient() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,9 +40,7 @@ export default function ListPatient() {
   };
   const emptyPatient = () => {
     return (
-      <View style={styles.info}>
-        <Image style={styles.imgListEmpty} source={url_listEmpty} />
-      </View>
+      <EmptyFlatlist/>
     );
   };
   const naviDetailPatient = ({item}) => {

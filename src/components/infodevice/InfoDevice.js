@@ -1,4 +1,4 @@
-import { placeholder } from '@babel/types';
+import {placeholder} from '@babel/types';
 import React from 'react';
 import {View, Text, Image, TextInput} from 'react-native';
 import {detailPatientStyle as styles} from '../../theme/detailPatient.style';
@@ -34,28 +34,31 @@ export function Temp({url, _value, _time, _name, _date}) {
             <Text style={styles.txt}>{_date}</Text>
           </View>
         </View>
-        {/* <View style={{flexDirection: 'row'}} /> */}
       </View>
     </View>
   );
 }
 export function History({url, _name}) {
   return (
-       <View style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.viewHis}>
         <Image style={styles.imgHis} source={url} />
         <Text style={styles.txtName}>{_name}</Text>
       </View>
-      </View>
+    </View>
   );
 }
 
-export function Content({value, placeholder,onChangeText}) {
+export function Content({value, placeholder, onChangeText}) {
   return (
-        <View style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.viewIn}>
-        <TextInput value={value} placeholder={placeholder} onChangeText={onChangeText}/>
+        <TextInput
+          value={value}
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+        />
       </View>
-      </View>
+    </View>
   );
 }

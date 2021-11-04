@@ -4,31 +4,27 @@ import {useNavigation} from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import {colors} from '../../theme/color';
 import {max_width} from '../../theme/headerLogin.style';
-import {login} from '../redux/reducers/index';
-import { findOneDoctor, findOnePatient } from '../axios/findPatient';
-
 import normalize from 'react-native-normalize';
+import { cleanUserStorage } from '../../responsitory/LocalStorage';
 import { getIdDoctor, getIdPatient } from '../redux/actions/idLogin';
-export default function Logout({}) {
+import { getNameDoctor, getNamePatient } from '../redux/actions/nameUser';
+export default function Logout() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const count = useSelector(a => a.login);
 
   const logout = () => {
-      if( count == getIdDoctor){
-          dispatch(getIdDoctor({}));
-          navigation.navigate('login');
-      }else if ( count == getIdPatient){
-        dispatch(getIdPatient({}));
-      }else{
-          Alert.alert('Lỗi');
-      }
+      cleanUserStorage();
+      // dispatch(getIdPatient({}));
+      // dispatch(getNamePatient({}));
+      //  dispatch(getIdDoctor({}));
+      // dispatch(getNameDoctor({}));
+      navigation.navigate('Login');
   }
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.touch}
-        onPress={() => navigation.navigate('login')}>
+        onPress={logout}>
         <Text style={styles.txtTouch}>Đăng xuất</Text>
       </TouchableOpacity>
     </View>

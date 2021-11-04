@@ -8,26 +8,7 @@ import { patientStyles as styles } from '../../theme/patient.style';
 
 export default function ListPatientDoctor() {
 const navigation = useNavigation();
-    //flatlist after call api
-  const [patients, setPatients] = useState();
-  const renderItemList = ({item, index}) => {
-    // <View style={styles.container}>
-    
-    <View style={styles.item}>
-      <Icon
-        style={styles.icon}
-        name="user-alt"
-        size={50}
-        color={colors.BLACK}
-      />
-      <View style={styles.info}>
-        <Text style={styles.txtName}>Nguyễn Văn Anh</Text>
-        <Text style={styles.txtRoom}>Phòng 01</Text>
-        <Text style={styles.txtAge}>Tuổi: 39 </Text>
-      </View>
-    </View>;
-    // </View>;
-  };
+
   return (
     <View style={styles.container}>
       {/* <Text>hãy nói gì đu</Text> */}

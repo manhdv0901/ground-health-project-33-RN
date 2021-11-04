@@ -9,5 +9,6 @@ export const loginPatient = ({username,password}) => {
 export const loginDoctor = ({username, password}) => {
   const url = '/data-login-doctor';
   const body = {username, password};
-  return Axios.post(url, body);
+  console.log('body', body);
+  return Axios.post(url, JSON.stringify(body));
 };
