@@ -23,7 +23,7 @@ const requestAPI = async (method, url,dataBody, headers = {}) =>{
     }else{
         config.data = dataBody;
     }
-    console.log(config);
+    // console.log(config);
 
     return axios(config)
     .then(res => {

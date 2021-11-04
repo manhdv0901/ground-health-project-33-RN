@@ -1,22 +1,71 @@
-import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
-import InputLogin from '../../components/InputLogin';
+import React, {useEffect, useState} from 'react';
+import {View, Image, Text, ScrollView} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { getNamePatient } from '../redux/actions/nameUser';
 import InfoUser from '../../components/infoUser/InfoUser';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import ButtonLogin from '../../components/ButtonLogin';
+import {findOnePatient} from '../axios/findPatient';
+import {connect, useSelector} from 'react-redux';
+import {login} from '../redux/reducers/index';
 
+export default function InfoPatient() {
+  const url = require('../../assets/images/man.png');
+  const [dataPatient, setDataPatient] = useState([]);
 
-export default function InfoPatient({navigation}) {
-    const url = require('../../assets/images/man.png');
-    return (
-         <View style={{flex:1}}>
-        <ScrollView>
-            <InfoUser url={url} name={"Nguyễn Văn Anh"} mail={'Doanmanh0901@gmail.com'} phone={'0123456789'} address={'Hà Nội'}
-                placeholderName={'Họ và tên'} placeholderPass={'Mật khẩu'} placeholderPhone={'Số điện thoại'} placeholderDate={'Ngày sinh'}
-                iconName={'user-alt'} iconPass={'lock'} iconPhone={'phone'} iconDate={'ticket-alt'}
-            />
-           <ButtonLogin title="cập nhật thông tin"/>
-           </ScrollView>
-        </View>
-    )
+  //get data loginDoctor on redux
+  const idPatient = useSelector(state => state.login);
+
+  const dispatch = useDispatch();
+  // console.log('id patient: ', idPatient.id);
+  useEffect(() => {
+    findOnePatient({id: idPatient.id})
+      .then(res => {
+        setDataPatient(res);
+        console.log('data one a patient: ', res);
+        dispatch(getNamePatient(res.name));
+        console.log('name patient: ', res.name);
+      })
+      .catch(err => {
+        console.log('err data patient: ', err);
+      });
+  }, []);
+
+  const txt = (content, value) =>{
+ 
+      <Text>{content}:{value}</Text>
+     
+    }
+  
+
+  return (
+    <View style={{flex: 1}}>
+      <InfoUser
+        url={url}
+        name={dataPatient.name}
+        titleAge={'Tuổi:'}
+        age={dataPatient.age}
+        titleId={'Mã số bệnh nhân:'}
+        id={dataPatient.id}
+        titlePhone={'Số điện thoại:'}
+        phone={dataPatient.phone}
+        titleUser={'Tên đăng nhập:'}
+        valueUser={dataPatient.username}
+        editableUser={false}
+        iconUser={'user-alt'}
+        titlePass={'Mật khẩu:'}
+        valuePass={dataPatient.password}
+        editablePass={false}
+        iconPass={'eye'}
+        titleDate={'Ngày sinh:'}
+        valueDate={dataPatient.birth_day}
+        editableUser={false}
+        iconDate={'wallet'}
+        titleDevice={'Thiết bị đang sử dụng:'}
+        valueDevice={dataPatient.key_device}
+        editableDevice={false}
+        iconDevice={'first-aid'}
+      />
+    </View>
+  );
 }
+

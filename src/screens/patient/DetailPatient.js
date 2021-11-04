@@ -7,8 +7,7 @@ import {
   Content,
 } from '../../components/infodevice/InfoDevice';
 import {useNavigation} from '@react-navigation/core';
-import {detailPatientStyle as styles} from '../../theme/detailPatient.style';
-import {findPatient} from '../axios/findPatient';
+import { detailPatientStyle as styles } from '../../theme/detailPatient.style';
 
 export default function DetailPatient({route}) {
   const navigation = useNavigation();
@@ -33,8 +32,8 @@ export default function DetailPatient({route}) {
   return (
     <ScrollView horizontal={false}>
       <View style={styles.container}>
-        <Text style={styles.txtTitle}>Họ và tên:{name} </Text>
-        <Text style={styles.txt}> Tuổi: {age}</Text>
+        <Text style={styles.txtTitle}>Lịch sử đo gần nhất: </Text>
+        <Text style={styles.txt}> Thông tin: </Text>
 
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity

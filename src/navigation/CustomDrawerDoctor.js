@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {
   DrawerContentScrollView,
@@ -7,14 +7,21 @@ import {
 } from '@react-navigation/drawer';
 import { colors } from '../theme/color';
 import normalize from 'react-native-normalize';
+import { useSelector } from 'react-redux';
+import {name} from '../screens/redux/reducers/index';
 
 export default function CustomDrawerDoctor({...props}) {
+  const nameDoctor = useSelector(state => state.name);
+  useEffect(() => {
+   return nameDoctor;
+  }, []);
+  console.log('doctor name: ', nameDoctor.name);
   const url= require('../assets/images/profile_doctor.png');
     return (    
     <DrawerContentScrollView {...props}>
       <View style={styles.header}>
         <Image source={url} style={styles.img}/>
-        <Text style={styles.txt}> BS Nguyễn Văn Anh</Text>
+        <Text style={styles.txt}> BS {nameDoctor.name}</Text>
       </View>
       <DrawerItemList {...props} />
     </DrawerContentScrollView>

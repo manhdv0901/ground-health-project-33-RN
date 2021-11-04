@@ -40,7 +40,7 @@ export default function NavigationDrawerPatient() {
         name="logout"
         component={Logout}
         options={{
-          title: 'Đăng xuất',
+          title: 'Cài đặt',
           drawerIcon: () => <IconAntDesign name="logout" size={30} />,
         }}
       />

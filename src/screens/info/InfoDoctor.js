@@ -1,22 +1,52 @@
-import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
-import InputLogin from '../../components/InputLogin';
-import InfoUser from '../../components/infoUser/InfoUser'
+import React, {useState, useEffect} from 'react';
+import {View, Text, ScrollView} from 'react-native';
+import {useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {login} from '../redux/reducers/index';
+import InfoUser from '../../components/infoUser/InfoUser';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import ButtonLogin from '../../components/ButtonLogin';
+import {findOneDoctor} from '../axios/findPatient';
+import { getNameDoctor } from '../redux/actions/nameUser';
 
+export default function InfoDoctor() {
+  const url = require('../../assets/images/man.png');
+  const [dataDoctor, setDataDoctor] = useState([]);
+  //get data loginDoctor on redux
+  const idDoctor = useSelector(state => state.login);
 
-export default function InfoDoctor({navigation}) {
-    const url = require('../../assets/images/man.png');
-    return (
-        <View style={{flex:1}}>
-            <ScrollView>
-                <InfoUser url={url} name={"BS Nguyễn Văn Anh"} mail={'Doanmanh0901@gmail.com'} phone={'0123456789'} address={'Hà Nội'}
-                placeholderName={'Họ và tên'} placeholderPass={'Mật khẩu'} placeholderPhone={'Số điện thoại'} placeholderDate={'Ngày sinh'}
-                iconName={'user-alt'} iconPass={'lock'} iconPhone={'phone'} iconDate={'ticket-alt'}
-            />
-           <ButtonLogin title="cập nhật thông tin"/>
-            </ScrollView>
-        </View>
-    )
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    findOneDoctor({id: idDoctor.id})
+      .then(res => {
+        setDataDoctor(res);
+        console.log('data one doctor: ', res);
+        dispatch(getNameDoctor(res.name));
+      })
+      .catch(err => {
+        console.log('err data doctor: ', err);
+      });
+  }, []);
+  return (
+    <View style={{flex: 1}}>
+      <InfoUser
+        url={url}
+        name={dataDoctor.name}
+        titleId={'Mã số bác sĩ:'}
+        id={dataDoctor.id}
+        valueUser={dataDoctor.username}
+        editableUser={false}
+        iconUser={'user-alt'}
+        valuePass={dataDoctor.password}
+        editablePass={false}
+        iconPass={'eye'}
+        valueDate={dataDoctor.gender}
+        editableDate={false}
+        iconDate={'wallet'}
+        valueDevice={dataDoctor._id}
+        editableDate={false}
+        iconDevice={'wallet'}
+      />
+    </View>
+  );
 }

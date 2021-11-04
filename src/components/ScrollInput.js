@@ -5,8 +5,9 @@ import InputLogin from './InputLogin';
 import {scrollInputStyle as styles} from '../theme/scrollInput.style';
 import CheckBox from '@react-native-community/checkbox';
 import ButtonLogin from './ButtonLogin';
-import axios from 'axios';
 import {loginPatient, loginDoctor} from '../screens/axios/authentication';
+import {useDispatch} from 'react-redux';
+import {getIdPatient, getIdDoctor} from '../screens/redux/actions/idLogin';
 
 // const navigation = useNavigation();
 export default function ScrollInput() {
@@ -14,7 +15,7 @@ export default function ScrollInput() {
   const [isCheck, setIsCheck] = useState(false);
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
-  const [validate, setValidate] = useState(true);
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
     if (!isCheck) {
@@ -24,6 +25,8 @@ export default function ScrollInput() {
             Alert.alert('Tài khoản mật khẩu không đúng vui lòng thử lại !');
           } else {
             navigation.navigate('patient');
+            dispatch(getIdPatient(res.id));
+            // console.log('id: ', dispatch(getIdPatient()));
           }
         })
         .catch(err => {
@@ -37,6 +40,7 @@ export default function ScrollInput() {
             Alert.alert('Tài khoản mật khẩu không đúng vui lòng thử lại !');
           } else {
             navigation.navigate('doctor');
+            dispatch(getIdDoctor(res.id));
           }
         })
         .catch(err => {
@@ -44,7 +48,7 @@ export default function ScrollInput() {
         });
     }
   };
-  const handlelogin1 = () => {
+  const handleLogin1 = () => {
     navigation.navigate(isCheck == true ? 'doctor' : 'patient');
   };
 
@@ -60,13 +64,16 @@ export default function ScrollInput() {
         <View style={styles.container}>
           <Text style={styles.txt}>Đăng nhập</Text>
           <InputLogin
+          title={'Tài khoản:'}
             value={user}
             onChange={a => setUser(a)}
             placeholder="Mời nhập tài khoản"
             nameIcon="user-alt"
           />
           <InputLogin
+          title={'Mật khẩu:'}
             value={password}
+            secureTextEntry={true}
             onChange={a => setPassword(a)}
             placeholder="Mời nhập mật khẩu"
             nameIcon="lock"
@@ -80,7 +87,7 @@ export default function ScrollInput() {
             />
             <Text style={styles.txtCheck}>Đăng nhập bác sĩ</Text>
           </View>
-          <ButtonLogin title={'Đăng nhập'} onPress={handlelogin1} />
+          <ButtonLogin title={'Đăng nhập'} onPress={handleLogin} />
         </View>
         <View style={styles.container}>
           <Text style={styles.txt}>Đăng kí</Text>
