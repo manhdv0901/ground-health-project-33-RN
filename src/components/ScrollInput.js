@@ -55,18 +55,6 @@ export default function ScrollInput() {
       }
     }
   };
-  // const loginEx = async () => {
-  //   try {
-  //     const res = await loginPatient({username: user, password: password});
-  //     console.log(res);
-  //     if (res) {
-  //       setIdStorage(res.id);
-  //       navigation.navigate('ListPatient');
-  //     }
-  //   } catch (error) {
-  //     console.log('err', error);
-  //   }
-  // };
 
   return (
     <SafeAreaView style={styles.view}>
@@ -103,79 +91,7 @@ export default function ScrollInput() {
           </View>
           <ButtonLogin title={'Đăng nhập'} onPress={handleLogin} />
         </View>
-        <View style={styles.container}>
-          <Text style={styles.txt}>Đăng kí</Text>
-          <InputLogin
-            value={password}
-            onChange={a => setPassword(a)}
-            placeholder="Họ và tên"
-            nameIcon="user-alt"
-          />
-          <InputLogin
-            value={password}
-            onChange={a => setPassword(a)}
-            placeholder="Số điện thoại"
-            nameIcon="phone"
-          />
-          <InputLogin
-            value={password}
-            onChange={a => setPassword(a)}
-            placeholder="Ngày sinh"
-            nameIcon="ticket-alt"
-          />
-          <InputLogin
-            value={password}
-            onChange={a => setPassword(a)}
-            placeholder="Email"
-            nameIcon="envelope-square"
-          />
-          <InputLogin
-            value={password}
-            onChange={a => setPassword(a)}
-            placeholder="Mời nhập mật khẩu"
-            nameIcon="lock"
-          />
-          <InputLogin
-            value={password}
-            onChange={a => setPassword(a)}
-            placeholder="Nhập lại mật khẩu"
-            nameIcon="lock"
-          />
-          <ButtonLogin title={'Đăng kí'} onPress={() => alert('Success')} />
-        </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-//   if (!isCheck) {
-//     loginPatient({username: user, password: password})
-//       .then(res => {
-//         if (res == null) {
-//           Alert.alert('Tài khoản mật khẩu không đúng vui lòng thử lại !');
-//         } else {
-//           navigation.navigate('patient');
-//           dispatch(getIdPatient(res.id));
-//           dispatch(getNamePatient(res.name));
-//         }
-//       })
-//       .catch(err => {
-//         console.log('err patient -->', err);
-//       });
-//   } else {
-//     loginDoctor({username: user, password: password})
-//       .then(res => {
-//         console.log('data doctor --> ', res);
-//         if (res == null) {
-//           Alert.alert('Tài khoản mật khẩu không đúng vui lòng thử lại !');
-//         } else {
-//           navigation.navigate('doctor');
-//           dispatch(getIdDoctor(res.id));
-//           dispatch(getNameDoctor(res.name));
-//         }
-//       })
-//       .catch(err => {
-//         console.log('err doctor --> ', err);
-//       });
-//   }
-// };
