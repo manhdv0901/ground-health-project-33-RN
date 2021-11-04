@@ -8,6 +8,7 @@ import ButtonLogin from './ButtonLogin';
 import {loginPatient, loginDoctor} from '../screens/axios/authentication';
 import {useDispatch} from 'react-redux';
 import {getIdPatient, getIdDoctor} from '../screens/redux/actions/idLogin';
+import { getNameDoctor, getNamePatient } from '../screens/redux/actions/nameUser';
 
 // const navigation = useNavigation();
 export default function ScrollInput() {
@@ -26,7 +27,7 @@ export default function ScrollInput() {
           } else {
             navigation.navigate('patient');
             dispatch(getIdPatient(res.id));
-            // console.log('id: ', dispatch(getIdPatient()));
+            dispatch(getNamePatient(res.name));
           }
         })
         .catch(err => {
@@ -41,6 +42,7 @@ export default function ScrollInput() {
           } else {
             navigation.navigate('doctor');
             dispatch(getIdDoctor(res.id));
+            dispatch(getNameDoctor(res.name));
           }
         })
         .catch(err => {
