@@ -6,7 +6,7 @@ import {login} from '../redux/reducers/index';
 import InfoUser from '../../components/infoUser/InfoUser';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {findOneDoctor} from '../axios/findPatient';
-import { getNameDoctor } from '../redux/actions/nameUser';
+
 
 export default function InfoDoctor() {
   const url = require('../../assets/images/man.png');
@@ -20,8 +20,6 @@ export default function InfoDoctor() {
     findOneDoctor({id: idDoctor.id})
       .then(res => {
         setDataDoctor(res);
-        console.log('data one doctor: ', res);
-        dispatch(getNameDoctor(res.name));
       })
       .catch(err => {
         console.log('err data doctor: ', err);

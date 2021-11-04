@@ -15,13 +15,13 @@ export default function CustomDrawerDoctor({...props}) {
   useEffect(() => {
    return nameDoctor;
   }, []);
-  console.log('doctor name: ', nameDoctor.name);
+  // console.log('doctor name: ', nameDoctor.name);
   const url= require('../assets/images/profile_doctor.png');
     return (    
     <DrawerContentScrollView {...props}>
       <View style={styles.header}>
         <Image source={url} style={styles.img}/>
-        <Text style={styles.txt}> BS {nameDoctor.name}</Text>
+        <Text style={styles.txt}> BS: {nameDoctor.name}</Text>
       </View>
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
