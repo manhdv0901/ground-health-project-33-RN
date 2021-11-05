@@ -35,7 +35,7 @@ export default function ScrollInput() {
           dispatch(getIdPatient(resPatient.id));
           dispatch(getNamePatient(resPatient.name));
           navigation.navigate('Patient');
-          dispatch(loading(true));
+          dispatch(loading(false));
         } else {
           // dispatch(loading(true));
           Alert.alert('Cảnh báo! Vui lòng nhập đúng tài khoản mật khẩu');
@@ -57,7 +57,7 @@ export default function ScrollInput() {
           dispatch(getIdDoctor(resDoctor.id));
           dispatch(getNameDoctor(resDoctor.name));
           navigation.navigate('Doctor');
-          dispatch(loading(true));
+          dispatch(loading(false));
         } else {
           dispatch(loading(false));
 
