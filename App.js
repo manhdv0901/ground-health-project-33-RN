@@ -16,7 +16,6 @@ import Logout from './src/screens/logout/Logout';
 import store from './src/screens/redux/store';
 import {Provider} from 'react-redux';
 import ListPatient from './src/screens/patient/ListPatient';
-
 const Stack = createStackNavigator();
 export default function App() {
   return (

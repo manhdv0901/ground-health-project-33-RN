@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, Image} from 'react-native';
+import moment from 'moment';
 import {findDevice} from '../axios/findDevice';
 import {chartStyle as styles} from '../../theme/chart.style';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -22,17 +23,24 @@ export default function ChartSpo2({route}) {
       });
   }, []);
   const renderItem = ({item, index}) => {
+    const time = item.real_time;
+    const formatTime = moment(time).utc().format('DD/MM/YYYY');
     return (
       <ScrollView>
-        <ChartDevices url_img={url} title_time={item.value} txt_time={'Thời gian: '} time={item.real_time} content={'%'}/>
+        <ChartDevices
+          url_img={url}
+          title_time={item.value}
+          txt_time={'Thời gian: '}
+          txt_time={'Thời gian: '}
+          time={formatTime}
+          content={'%'}
+        />
       </ScrollView>
     );
   };
 
   const listEmpty = () => {
-    return (
-      <EmptyFlatlist/>
-    );
+    return <EmptyFlatlist />;
   };
   return (
     <View style={styles.container}>

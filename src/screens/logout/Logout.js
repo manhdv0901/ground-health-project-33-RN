@@ -1,30 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {colors} from '../../theme/color';
 import {max_width} from '../../theme/headerLogin.style';
 import normalize from 'react-native-normalize';
-import { cleanUserStorage } from '../../responsitory/LocalStorage';
-import { getIdDoctor, getIdPatient } from '../redux/actions/idLogin';
-import { getNameDoctor, getNamePatient } from '../redux/actions/nameUser';
+import {cleanUserStorage} from '../../responsitory/LocalStorage';
+import {getIdDoctor, getIdPatient} from '../redux/actions/idLogin';
+import {getNameDoctor, getNamePatient} from '../redux/actions/nameUser';
+import LoadingModal from '../../components/loading/LoadingModal';
 export default function Logout() {
+  const [onLoad, setOnLoad] = useState(true);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const logout = () => {
-      cleanUserStorage();
-      // dispatch(getIdPatient({}));
-      // dispatch(getNamePatient({}));
-      //  dispatch(getIdDoctor({}));
-      // dispatch(getNameDoctor({}));
-      navigation.navigate('Login');
-  }
+    cleanUserStorage();
+    // dispatch(getIdPatient({}));
+    // dispatch(getNamePatient({}));
+    //  dispatch(getIdDoctor({}));
+    // dispatch(getNameDoctor({}));
+    navigation.navigate('Login');
+  };
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.touch}
-        onPress={logout}>
+      {/* <LoadingModal visible={true} /> */}
+      <TouchableOpacity style={styles.touch} onPress={logout}>
         <Text style={styles.txtTouch}>Đăng xuất</Text>
       </TouchableOpacity>
     </View>

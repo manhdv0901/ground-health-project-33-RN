@@ -4,14 +4,25 @@ import normalize from 'react-native-normalize';
 import {colors} from '../../theme/color';
 import {max_width} from '../../theme/headerLogin.style';
 
-export default function ChartDevices({url_img, title_time, time, content,txt_time}) {
+export default function ChartDevices({
+  url_img,
+  title_time,
+  time,
+  content,
+  txt_time,
+}) {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.item}>
           <Image style={styles.imgChart} source={url_img} />
-          <Text style={styles.txtChart}>{title_time} {content}</Text>
-          <Text style={styles.txtChart}>{txt_time}{time}</Text>
+          <Text style={styles.txtChart}>
+            {title_time} {content}
+          </Text>
+          <Text style={styles.txtChart}>
+            {txt_time}
+            {time}
+          </Text>
         </View>
       </View>
     </ScrollView>
@@ -21,8 +32,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.WHITE_DOWN,
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   txtTile: {
@@ -35,9 +46,10 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: colors.WHITE,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: normalize(20),
     width: max_width * 0.95,
-    padding: normalize(20),
+    padding: normalize(15),
     borderRadius: normalize(20),
   },
   imgChart: {
@@ -47,7 +59,7 @@ const styles = StyleSheet.create({
   txtChart: {
     fontSize: normalize(16),
     marginLeft: normalize(10),
-    marginTop: normalize(10),
+    marginTop: normalize(5),
     fontWeight: 'bold',
     color: colors.BLACK,
   },
