@@ -30,17 +30,21 @@ export default function InfoDoctor() {
         name={dataDoctor.name}
         titleId={'Mã số bác sĩ:'}
         id={dataDoctor.id}
+        titleUser={'Tên đăng nhập:'}
         valueUser={dataDoctor.username}
+        titlePass={'Mật khẩu đăng nhập:'}
         editableUser={false}
         iconUser={'user-alt'}
         valuePass={dataDoctor.password}
         editablePass={false}
         iconPass={'eye'}
+        titleDate={'Giới tính:'}
         valueDate={dataDoctor.gender}
         editableDate={false}
         iconDate={'wallet'}
+        titleDevice={'Mã số chính:'}
         valueDevice={dataDoctor._id}
-        editableDate={false}
+        editableDevice={false}
         iconDevice={'wallet'}
       />
     </View>

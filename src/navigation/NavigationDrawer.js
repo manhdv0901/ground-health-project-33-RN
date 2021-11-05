@@ -12,9 +12,7 @@ import Ionicons from '../components/icons/Ionicons';
 import IconAntDesign from '../components/icons/IconAntDesign';
 import CustomDrawerDoctor from './CustomDrawerDoctor';
 import normalize from 'react-native-normalize';
-
 const Drawer = createDrawerNavigator();
-
 export default function NavigationDrawer() {
   return (
     <Drawer.Navigator
@@ -40,7 +38,7 @@ export default function NavigationDrawer() {
         name="notification"
         component={Notification}
         options={{
-          title: 'Thông báo khẩn cấp',
+          title: 'Thông báo khẩn',
           drawerIcon: () => <Ionicons name="notifications" size={30} />,
         }}
       />

@@ -35,9 +35,10 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: colors.WHITE,
     flexDirection: 'row',
+    justifyContent:'space-between',
     marginTop: normalize(20),
     width: max_width * 0.95,
-    padding: normalize(20),
+    padding: normalize(15),
     borderRadius: normalize(20),
   },
   imgChart: {
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
   txtChart: {
     fontSize: normalize(16),
     marginLeft: normalize(10),
-    marginTop: normalize(10),
+    marginTop: normalize(5),
     fontWeight: 'bold',
     color: colors.BLACK,
   },
