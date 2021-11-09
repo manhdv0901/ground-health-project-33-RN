@@ -35,12 +35,11 @@ export default function ScrollInput() {
           dispatch(getIdPatient(resPatient.id));
           dispatch(getNamePatient(resPatient.name));
           navigation.navigate('Patient');
-          dispatch(loading(true));
+          dispatch(loading(false));
         } else {
           // dispatch(loading(true));
           Alert.alert('Cảnh báo! Vui lòng nhập đúng tài khoản mật khẩu');
           dispatch(loading(false));
-
         }
       } catch (err) {
         // dispatch(loading(false));
@@ -57,7 +56,7 @@ export default function ScrollInput() {
           dispatch(getIdDoctor(resDoctor.id));
           dispatch(getNameDoctor(resDoctor.name));
           navigation.navigate('Doctor');
-          dispatch(loading(true));
+          dispatch(loading(false));
         } else {
           dispatch(loading(false));
 
@@ -104,7 +103,6 @@ export default function ScrollInput() {
           </View>
           <ButtonLogin title={'Đăng nhập'} onPress={handleLogin} />
         </View>
-      
       </ScrollView>
     </SafeAreaView>
   );

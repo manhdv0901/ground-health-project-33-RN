@@ -26,10 +26,10 @@ export default function ListPatient() {
         // const arrayPatient = array.push(res.patient);
         // console.log('New array: ', arrayPatient);
         // setListFindPatient(array);
-         console.log('Data patient: ', res);
+        //  console.log('Data patient: ', res);
         const array = [...dataPatient, res.patient];
         setDataPatient(array);
-        console.log('Data patient array: ', array);
+        // console.log('Data patient array: ', array);
 
         setDataDevice(res.device);
         // console.log('key device: ', res.device);
@@ -69,11 +69,6 @@ export default function ListPatient() {
             <Text style={styles.txtRoom}>Số phòng: {item.number_room}</Text>
             <View style={styles.viewDel}>
               <Text style={styles.txtAge}>Tuổi: {item.age}</Text>
-              <TouchableOpacity
-                style={styles.touchDel}
-                onPress={() => alert('are you sure ?')}>
-                <Text style={styles.txtDel}>Xóa bệnh nhân </Text>
-              </TouchableOpacity>
             </View>
           </View>
         </View>

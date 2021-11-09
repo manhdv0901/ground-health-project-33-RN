@@ -7,7 +7,7 @@ export const detailPatientStyle = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:colors.WHITE_DOWN,
-        marginLeft:normalize(10),
+        // marginLeft:normalize(10),
     },
     txtTitle:{
         fontSize:normalize(20),
@@ -54,6 +54,8 @@ export const detailPatientStyle = StyleSheet.create({
         borderRadius:20,
         backgroundColor: colors.WHITE,
         padding:normalize(20),
+        justifyContent:'center',
+        alignSelf:'center'
     },
     txtName:{
         fontSize:normalize(18),
@@ -74,6 +76,7 @@ export const detailPatientStyle = StyleSheet.create({
          padding:normalize(10), 
          marginTop:normalize(25),
         //  marginLeft:normalize(10),
+        alignSelf:'center',
     },
     imgHis:{
         width:normalize(30),

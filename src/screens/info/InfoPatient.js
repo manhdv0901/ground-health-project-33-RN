@@ -27,7 +27,7 @@ export default function InfoPatient() {
         // console.log('name patient: ', res.name);
       })
       .catch(err => {
-        console.log('err data patient: ', err);
+        // console.log('err data patient: ', err);
       });
   }, []);
 

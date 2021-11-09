@@ -16,7 +16,8 @@ export const patientStyles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: normalize(20),
     borderWidth: normalize(2),
-    borderRadius: 10,
+    borderRadius: normalize(10),
+    borderColor: colors.BLUE_LIGHT,
   },
   icon: {
     width: normalize(40),
@@ -48,7 +49,7 @@ export const patientStyles = StyleSheet.create({
   touchDel:{
     
     marginLeft:normalize(15),
-    borderRadius:15
+    borderRadius:normalize(15)
   },
   txtDel:{
     fontSize: normalize(15),

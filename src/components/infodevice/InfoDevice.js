@@ -3,7 +3,7 @@ import React from 'react';
 import {View, Text, Image, TextInput} from 'react-native';
 import {detailPatientStyle as styles} from '../../theme/detailPatient.style';
 
-export function InfoPatient({navigaiton, url, _value, _name, _time, _date}) {
+export function InfoPatient({url, _value, _name, _time, _date}) {
   return (
     <View style={styles.container}>
       <View style={styles.viewCom}>

@@ -8,7 +8,7 @@ export const STORAGE_KEYS = {
 export const setUserStorage = async (value) => {
     try{
         const jsonValue = JSON.stringify(value);
-        console.log('set jsonValue Patient', jsonValue);
+        // console.log('set jsonValue Patient', jsonValue);
         // console.log(typeof jsonValue);
         await AsyncStorage.setItem(STORAGE_KEYS.USER, jsonValue);
     }catch(err){
@@ -30,7 +30,7 @@ export const getUserStorage = async () =>{
 export const setUserDoctorStorage = async value => {
   try {
     const jsonValue = JSON.stringify(value);
-    console.log('set jsonValue Patient', jsonValue);
+    // console.log('set jsonValue Patient', jsonValue);
     // console.log(typeof jsonValue);
     await AsyncStorage.setItem(STORAGE_KEYS.TYPE, jsonValue);
   } catch (err) {

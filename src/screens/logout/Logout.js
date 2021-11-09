@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {colors} from '../../theme/color';
 import {max_width} from '../../theme/headerLogin.style';
 import normalize from 'react-native-normalize';
-import {cleanUserStorage} from '../../responsitory/LocalStorage';
+import {cleanUserStorage, setUserDoctorStorage, setUserStorage} from '../../responsitory/LocalStorage';
 import {getIdDoctor, getIdPatient} from '../redux/actions/idLogin';
 import {getNameDoctor, getNamePatient} from '../redux/actions/nameUser';
 import LoadingModal from '../../components/loading/LoadingModal';
@@ -16,9 +16,11 @@ export default function Logout() {
 
   const logout = () => {
     cleanUserStorage();
-    // dispatch(getIdPatient({}));
+    dispatch(getIdPatient({}));
     // dispatch(getNamePatient({}));
-    //  dispatch(getIdDoctor({}));
+    setUserDoctorStorage({});
+    setUserStorage({});
+     dispatch(getIdDoctor({}));
     // dispatch(getNameDoctor({}));
     navigation.navigate('Login');
   };

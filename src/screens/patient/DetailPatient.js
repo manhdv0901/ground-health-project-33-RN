@@ -8,6 +8,9 @@ import {
 } from '../../components/infodevice/InfoDevice';
 import {useNavigation} from '@react-navigation/core';
 import { detailPatientStyle as styles } from '../../theme/detailPatient.style';
+import normalize from 'react-native-normalize';
+import moment from 'moment';
+
 
 export default function DetailPatient({route}) {
   const navigation = useNavigation();
@@ -21,21 +24,24 @@ export default function DetailPatient({route}) {
   const {spO2_time} = route.params;
   const {data_temp} = route.params;
   const {temp_time} = route.params;
-  const {name} = route.params;
-  const {age} = route.params;
   const {key_device} = route.params;
   // console.log(name, age, key_device);
 
   const naviChart = ({item}) => {
     navigation.navigate('chartHeart');
   };
+  const time_spO2 = moment(spO2_time).utc().format('DD/MM/YYYY');
+  const time_heart = moment(heart_time).utc().format('DD/MM/YYYY');
+  const time_temp = moment(temp_time).utc().format('DD/MM/YYYY');
+
+
   return (
     <ScrollView horizontal={false}>
       <View style={styles.container}>
         <Text style={styles.txtTitle}>Lịch sử đo gần nhất: </Text>
         <Text style={styles.txt}> Thông tin: </Text>
 
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', justifyContent:'space-between', marginHorizontal: normalize(20)}}>
           <TouchableOpacity
             onPress={() =>
               navigation.navigate('chartSpo2', {
@@ -47,7 +53,7 @@ export default function DetailPatient({route}) {
               _value={data_spO2}
               _name={'% SPO2'}
               _time={'Đo lúc'}
-              _date={spO2_time}
+              _date={time_spO2}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -62,7 +68,7 @@ export default function DetailPatient({route}) {
               _value={data_heart}
               _name={'Nhịp tim/ phút'}
               _time={'Đo lúc'}
-              _date={heart_time}
+              _date={time_heart}
             />
           </TouchableOpacity>
         </View>
@@ -78,7 +84,7 @@ export default function DetailPatient({route}) {
             _value={data_temp}
             _name={'Nhiệt độ cơ thể *C'}
             _time={'Đo lúc'}
-            _date={temp_time}
+            _date={time_temp}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('history')}>
