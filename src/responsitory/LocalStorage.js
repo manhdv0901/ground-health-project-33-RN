@@ -20,7 +20,7 @@ export const setUserStorage = async (value) => {
 export const getUserStorage = async () =>{
     try{
         const jsonValue = await AsyncStorage.getItem(STORAGE_KEYS.USER);
-        console.log('get jsonValue Patient', jsonValue);
+        // console.log('get jsonValue Patient', jsonValue);
         return jsonValue !== null ? JSON.parse(jsonValue) : {} ;
     }catch(err) {
         if (__DEV__)
@@ -41,7 +41,7 @@ export const setUserDoctorStorage = async value => {
 export const getUserDoctorStorage = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem(STORAGE_KEYS.TYPE);
-    console.log('get jsonValue Patient', jsonValue);
+    // console.log('get jsonValue Doctor', jsonValue);
     return jsonValue !== null ? JSON.parse(jsonValue) : {};
   } catch (err) {
     if (__DEV__) {

@@ -3,12 +3,11 @@ import {View, Text, FlatList, Image, ScrollView} from 'react-native';
 import moment from 'moment';
 import {findDevice} from '../axios/findDevice';
 import {chartStyle as styles} from '../../theme/chart.style';
-import EmptyFlatlist from '../../components/icons/emptyFlatlist/EmptyFlatlist';
 import ChartDevices from '../../components/item/ChartDevices';
+import PlaceholderEmpty from '../../components/icons/emptyFlatlist/PlaceHolderEmpty';
 
 export default function ChartHeart({route}) {
   const url = require('../../assets/images/heart.png');
-  const url_listEmpty = require('../../assets/images/listEmpty.png');
   const [dataHeart, setDataHeart] = useState([]);
   const {device} = route.params;
   // console.log(device);
@@ -39,7 +38,7 @@ export default function ChartHeart({route}) {
     );
   };
   const listEmpty = () => {
-    return <EmptyFlatlist />;
+    return <PlaceholderEmpty/>
   };
   return (
     <View style={styles.container}>

@@ -9,6 +9,7 @@ import {findPatient} from '../axios/findPatient';
 import normalize from 'react-native-normalize';
 import {login} from '../redux/reducers/index';
 import EmptyFlatlist from '../../components/icons/emptyFlatlist/EmptyFlatlist';
+import { ShineBox } from '../../components/icons/emptyFlatlist/EmptyFlatlist';
 
 export default function ListPatient() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,6 +42,7 @@ export default function ListPatient() {
   const emptyPatient = () => {
     return (
       <EmptyFlatlist/>
+      // <ShineBox/>
     );
   };
   const naviDetailPatient = ({item}) => {

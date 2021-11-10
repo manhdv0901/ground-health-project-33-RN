@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
+import messaging from '@react-native-firebase/messaging';
+
 import Splash from './src/screens/splash/Splash';
 import Login from './src/screens/login/Login';
 import NavigationDrawer from './src/navigation/NavigationDrawer';
@@ -18,6 +20,9 @@ import {Provider} from 'react-redux';
 import ListPatient from './src/screens/patient/ListPatient';
 const Stack = createStackNavigator();
 export default function App() {
+  useEffect(() => {
+    messaging().getToken().then(token => console.log('token:', token)).catch(err => console.log('err token: ', err));
+  }, [])
   return (
     <NavigationContainer>
       <Provider store={store}>

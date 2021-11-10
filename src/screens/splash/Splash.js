@@ -27,8 +27,8 @@ export default function Splash() {
       const usePatient = await getUserStorage();
       const useDoctor = await getUserDoctorStorage();
 
-      console.log('id patient login: ', usePatient);
-      console.log('id doctor login: ', useDoctor);
+      // console.log('id patient login: ', usePatient);
+      // console.log('id doctor login: ', useDoctor);
 
       if (Object.keys(usePatient).length > 0) {
         dispatch(getIdPatient(usePatient.id));
