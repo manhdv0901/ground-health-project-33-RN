@@ -43,7 +43,7 @@ export default function InputLogin({
         <Icon
           style={styles.icon}
           name={nameIcon}
-          size={normalize(30)}
+          size={normalize(25)}
           color={colors.BLACK}
         />
       </View>

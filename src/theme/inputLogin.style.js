@@ -30,6 +30,7 @@ export const inputLoginStyle = StyleSheet.create({
   icon:{
     // marginTop:normalize(10),
     // marginLeft: normalize(-40),
+    marginRight: normalize(10),
   }, 
   txtEror: {
     color: colors.RED,
