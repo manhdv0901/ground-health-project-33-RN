@@ -94,5 +94,14 @@ export const detailPatientStyle = StyleSheet.create({
          marginTop:normalize(25),
         //  marginLeft:normalize(10),
     },
+    viewIn:{
+        backgroundColor:colors.WHITE,
+        width: max_width * 0.92,
+        borderRadius:20,
+        marginTop:normalize(20),
+        padding:normalize(10),
+        alignSelf:'center'
+       
+    },
 
 })

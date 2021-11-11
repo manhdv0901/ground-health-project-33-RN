@@ -59,7 +59,7 @@ export default function InfoPatient() {
         iconPass={'eye'}
         titleDate={'Ngày sinh:'}
         valueDate={dataPatient.birth_day}
-        editableUser={false}
+        editableDate={false}
         iconDate={'wallet'}
         titleDevice={'Thiết bị đang sử dụng:'}
         valueDevice={dataPatient.key_device}

@@ -35,8 +35,8 @@ export const inputLoginStyle = StyleSheet.create({
   txtEror: {
     color: colors.RED,
     fontSize: normalize(10),
-    marginLeft: normalize(30),
-    marginTop:normalize(55),
-    position:'absolute'
+    marginLeft: normalize(40),
+    marginTop:normalize(-13),
+    // position:'absolute'
   },
 });

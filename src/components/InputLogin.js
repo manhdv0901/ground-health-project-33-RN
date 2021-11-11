@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import * as Animatable from 'react-native-animatable';
 import {ScrollView, TextInput, View, Text} from 'react-native';
 import {inputLoginStyle as styles} from '../theme/inputLogin.style';
@@ -16,20 +16,12 @@ export default function InputLogin({
   editable,
 }) {
   const img_user = '../assets/images/user.png';
+  
+  
   return (
     <View>
-      {/* {value ? null : (
-        <Animatable.View
-          animation="zoomIn"
-          duration={500}
-          // iterationCount = 'infinite'
-          // direction="alternate"
-          // useNativeDriver={true}
-        >
-          <Text style={styles.txtEror}>Don't empty info</Text>
-        </Animatable.View>
-      )} */}
       <Text style={styles.txtAbove}>{title}</Text>
+
       <View style={styles.container}>
         <TextInput
           editable={editable}
@@ -40,6 +32,7 @@ export default function InputLogin({
           secureTextEntry={secureTextEntry}
           inlineImageLeft={img_user}
         />
+
         <Icon
           style={styles.icon}
           name={nameIcon}
@@ -47,6 +40,17 @@ export default function InputLogin({
           color={colors.BLACK}
         />
       </View>
+      {value ? null : (
+        <Animatable.View
+          animation="zoomIn"
+          duration={500}
+          // iterationCount = 'infinite'
+          // direction="alternate"
+          // useNativeDriver={true}
+        >
+          <Text style={styles.txtEror}>Không được để trống thông tin</Text>
+        </Animatable.View>
+      )}
     </View>
   );
 }

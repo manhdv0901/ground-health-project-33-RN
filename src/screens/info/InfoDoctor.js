@@ -10,7 +10,7 @@ export default function InfoDoctor() {
   const url = require('../../assets/images/man.png');
   const [dataDoctor, setDataDoctor] = useState([]);
   //get data loginDoctor on redux
- const idDoctor = useSelector(state => state.login)
+  const idDoctor = useSelector(state => state.login);
   useEffect(() => {
     findOneDoctor({id: idDoctor.id})
       .then(res => {

@@ -1,4 +1,3 @@
-import {placeholder} from '@babel/types';
 import React from 'react';
 import {View, Text, Image, TextInput} from 'react-native';
 import {detailPatientStyle as styles} from '../../theme/detailPatient.style';
@@ -51,14 +50,14 @@ export function History({url, _name}) {
 
 export function Content({value, placeholder, onChangeText}) {
   return (
-    <View style={styles.container}>
-      <View style={styles.viewIn}>
-        <TextInput
-          value={value}
-          placeholder={placeholder}
-          onChangeText={onChangeText}
-        />
-      </View>
+    // <View style={styles.container}>
+    <View style={styles.viewIn}>
+      <TextInput
+        value={value}
+        placeholder={placeholder}
+        onChangeText={onChangeText}
+      />
     </View>
+    // </View>
   );
 }

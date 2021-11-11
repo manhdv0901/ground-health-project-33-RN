@@ -1,15 +1,22 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  BackHandler,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useNavigation} from '@react-navigation/core';
+import {useFocusEffect, useNavigation} from '@react-navigation/core';
+import Toast from 'react-native-simple-toast';
+
 import {colors} from '../../theme/color';
 import {patientStyles as styles} from '../../theme/patient.style';
 import AddPatient from '../../components/modal/AddPatient';
 import {findPatient} from '../axios/findPatient';
 import normalize from 'react-native-normalize';
-import {login} from '../redux/reducers/index';
 import EmptyFlatlist from '../../components/icons/emptyFlatlist/EmptyFlatlist';
-import { ShineBox } from '../../components/icons/emptyFlatlist/EmptyFlatlist';
 
 export default function ListPatient() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +25,26 @@ export default function ListPatient() {
   const url_img = require('../../assets/images/add.png');
   const [dataPatient, setDataPatient] = useState([]);
   const [dataDevice, setDataDevice] = useState([]);
-  const url_listEmpty = require('../../assets/images/listEmpty.png');
-  console.log('id', txt );
+  console.log('id', txt);
+
+  let backAction = null;
+  useFocusEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', onBackHandle);
+    return async () => {
+      BackHandler.removeEventListener('hardwareBackPress', onBackHandle);
+    };
+  });
+
+  const onBackHandle = () => {
+    if (backAction + 2000 > new Date().getTime()) {
+      BackHandler.exitApp();
+    }
+    backAction = new Date().getTime();
+    Toast.show('Bấm thêm lần nữa để thoát !', Toast.SHORT);
+
+    return true;
+  };
+
   const handleFind = () => {
     findPatient({id: txt})
       .then(res => {
@@ -41,12 +66,12 @@ export default function ListPatient() {
   };
   const emptyPatient = () => {
     return (
-      <EmptyFlatlist/>
+      <EmptyFlatlist />
       // <ShineBox/>
     );
   };
-  const naviDetailPatient = ({item}) => {
-    navigation.navigate('detailPatient', {
+  const naviDetailPatient = () => {
+    navigation.navigate('DetailPatient', {
       data_heart: dataDevice.heart[0].value,
       heart_time: dataDevice.heart[0].real_time,
       data_spO2: dataDevice.spO2[0].value,
@@ -78,8 +103,6 @@ export default function ListPatient() {
     );
   };
 
-  const keyExtractor2 = (item, index) => item.id;
-
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -101,7 +124,7 @@ export default function ListPatient() {
       <AddPatient
         isOpen={isOpen}
         closed={() => setIsOpen(false)}
-        onClosed={closeModal} 
+        onClosed={closeModal}
         title={'Thêm bệnh nhân'}
         value={txt}
         onChangeText={t => setTxt(t)}

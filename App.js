@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {BackHandler} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import messaging from '@react-native-firebase/messaging';
@@ -17,12 +18,15 @@ import DetailNotifi from './src/screens/notification/DetailNotifi';
 import Logout from './src/screens/logout/Logout';
 import store from './src/screens/redux/store';
 import {Provider} from 'react-redux';
-import ListPatient from './src/screens/patient/ListPatient';
 const Stack = createStackNavigator();
 export default function App() {
   useEffect(() => {
-    messaging().getToken().then(token => console.log('token:', token)).catch(err => console.log('err token: ', err));
-  }, [])
+    messaging()
+      .getToken()
+      .then(token => console.log('token:', token))
+      .catch(err => console.log('err token: ', err));
+  }, []);
+
   return (
     <NavigationContainer>
       <Provider store={store}>
@@ -33,9 +37,9 @@ export default function App() {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Doctor" component={NavigationDrawer} />
           <Stack.Screen name="Patient" component={NavigationDrawerPatient} />
-          <Stack.Screen name="detailPatient" component={DetailPatient} />
+          <Stack.Screen name="DetailPatient" component={DetailPatient} />
           <Stack.Screen
-            name="detailPatientDoctor"
+            name="DetailPatientDoctor"
             component={DetailPatientDoctor}
           />
           <Stack.Screen name="chartHeart" component={ChartHeart} />

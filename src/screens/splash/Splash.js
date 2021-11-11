@@ -1,9 +1,10 @@
-import axios from 'axios';
 import React, {useEffect} from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View, BackHandler} from 'react-native';
 import normalize from 'react-native-normalize';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
+import Toast from 'react-native-simple-toast';
+
 import {
   getUserStorage,
   getUserDoctorStorage,
@@ -18,6 +19,22 @@ export default function Splash() {
   const dispatch = useDispatch();
   const url = require('../../assets/images/doctor_backgroup.png');
   // hàm async storage sẽ trả về một object và mk sẽ lấy object đó để lưu nó lại trong redux là di chuyển redux đến các màn khác
+  // let backAction = null;
+  // useEffect(() => {
+  //   BackHandler.addEventListener('hardwareBackPress', onBackHandle);
+  //   return async () => {
+  //     BackHandler.removeEventListener('hardwareBackPress', onBackHandle);
+  //   };
+  // });
+
+  // const onBackHandle = () => {
+  //   if (backAction + 2000 > new Date().getTime()) {
+  //     BackHandler.exitApp();
+  //   }
+  //   backAction = new Date().getTime();
+  //   Toast.show('Bấm thêm lần nữa để thoát !', Toast.SHORT);
+  //   return true;
+  // };
 
   useEffect(() => {
     setData();
@@ -34,7 +51,7 @@ export default function Splash() {
         dispatch(getIdPatient(usePatient.id));
         dispatch(getNamePatient(usePatient.name));
         navigation.navigate('Patient');
-      }else if (Object.keys(useDoctor).length > 0) {
+      } else if (Object.keys(useDoctor).length > 0) {
         dispatch(getIdDoctor(useDoctor.id));
         dispatch(getNameDoctor(useDoctor.name));
         navigation.navigate('Doctor');

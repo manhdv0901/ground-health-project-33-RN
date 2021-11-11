@@ -20,7 +20,7 @@ export default function ChartHeart({route}) {
       .catch(err => {
         console('err find device: ', err);
       });
-  }, []);
+  }, [device]);
 
   const renderItem = ({item, index}) => {
     const time = item.real_time;
@@ -38,7 +38,7 @@ export default function ChartHeart({route}) {
     );
   };
   const listEmpty = () => {
-    return <PlaceholderEmpty/>
+    return <PlaceholderEmpty />;
   };
   return (
     <View style={styles.container}>
